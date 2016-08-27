@@ -66,10 +66,18 @@ func (h *HTTPService) nearestNeighbors(c echo.Context) error {
 	if err != nil {
 		return err
 	}
+	var companies []data.Company
+
 	nearest := h.treeService.Nearest(rtreego.Point{lat, lon})
+	for key, value := range nearest {
+		companies = append(companies, data.Company{
+			Name:    key,
+			Drivers: value,
+		})
+	}
 	return c.JSON(http.StatusOK, &data.NearestResponse{
-		Success: true,
-		Drivers: nearest,
+		Success:   true,
+		Companies: companies,
 	})
 }
 

@@ -37,7 +37,7 @@ func (r *RtreeService) AddDriver(driver *data.DriverData) {
 	})
 }
 
-func (r *RtreeService) Nearest(point rtreego.Point) []data.DriverItem {
+func (r *RtreeService) Nearest(point rtreego.Point) map[string][]data.DriverItem {
 	return r.ds.Nearest(point)
 }
 

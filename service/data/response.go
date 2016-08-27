@@ -8,7 +8,11 @@ type DriverItem struct {
 	Name string  `json:"name"`
 }
 type NearestResponse struct {
-	Success bool         `json:"success"`
+	Success   bool      `json:"success"`
+	Companies []Company `json:"companies"`
+}
+type Company struct {
+	Name    string       `json:"name"`
 	Drivers []DriverItem `json:"drivers"`
 }
 
