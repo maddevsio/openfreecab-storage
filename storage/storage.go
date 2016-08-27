@@ -39,6 +39,9 @@ func (ds *DriverStorage) Nearest(point rtreego.Point) map[string][]data.DriverIt
 		ds.nearestNeighbors, point,
 	)
 	for _, item := range items {
+		if item == nil {
+			continue
+		}
 		driver := item.(*data.Driver)
 		if driver == nil {
 			continue
