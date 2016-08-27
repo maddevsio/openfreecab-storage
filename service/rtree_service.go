@@ -34,8 +34,8 @@ func (r *RtreeService) Run() error {
 	return nil
 }
 
-func (r *RtreeService) AddDriver() {
-	// TODO: Add code
+func (r *RtreeService) AddDriver(driver *data.DriverData) {
+	r.tree.Insert(&data.Driver{rtreego.Point{driver.Lat, driver.Lon}, driver.CompanyName})
 }
 
 func (r *RtreeService) Nearest(point rtreego.Point) []data.DriverItem {
