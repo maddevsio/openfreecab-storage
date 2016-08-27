@@ -32,7 +32,7 @@ func (h *HTTPService) Init(os *OpenStorage) error {
 	h.e = e
 	h.e.GET("/nearest/:lat/:lon", h.nearestNeighbors)
 	h.e.POST("/add/", h.addData)
-	h.e.POST("/clean/:companyName/", nil)
+	h.e.POST("/clean/:companyName/", h.cleanByCompanyName)
 	return nil
 }
 
@@ -70,5 +70,14 @@ func (h *HTTPService) nearestNeighbors(c echo.Context) error {
 	return c.JSON(http.StatusOK, &data.NearestResponse{
 		Success: true,
 		Drivers: nearest,
+	})
+}
+
+func (h *HTTPService) cleanByCompanyName(c echo.Context) error {
+	companyName := c.Param("companyName")
+	h.treeService.CleanStorageByCompanyName(companyName)
+	return c.JSON(http.StatusOK, &data.DefaultResponse{
+		Success: true,
+		Message: "Cleaned",
 	})
 }
