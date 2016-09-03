@@ -12,8 +12,10 @@ type NearestResponse struct {
 	Companies []Company `json:"companies"`
 }
 type Company struct {
-	Name    string       `json:"name"`
-	Drivers []DriverItem `json:"drivers"`
+	Name     string       `json:"name"`
+	Icon     string       `json:"icon"`
+	Contacts []Contact    `json:"contacts"`
+	Drivers  []DriverItem `json:"drivers"`
 }
 
 func (d *DriverItem) SetCoords(p rtreego.Point) {

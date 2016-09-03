@@ -42,7 +42,6 @@ func (h *HTTPService) Run() error {
 }
 
 func (h *HTTPService) addData(c echo.Context) error {
-	h.logger.Info("Adding Driver")
 	driverData := &data.DriverData{}
 	if err := c.Bind(driverData); err != nil {
 		return c.JSON(http.StatusBadRequest, &data.DefaultResponse{
@@ -70,9 +69,12 @@ func (h *HTTPService) nearestNeighbors(c echo.Context) error {
 
 	nearest := h.treeService.Nearest(rtreego.Point{lat, lon})
 	for key, value := range nearest {
+		info := data.Companies[key]
 		companies = append(companies, data.Company{
-			Name:    key,
-			Drivers: value,
+			Name:     key,
+			Icon:     info.Icon,
+			Contacts: info.Contacts,
+			Drivers:  value,
 		})
 	}
 	return c.JSON(http.StatusOK, &data.NearestResponse{

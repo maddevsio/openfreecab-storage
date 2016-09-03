@@ -1,7 +1,6 @@
 package storage
 
 import (
-	"fmt"
 	"sync"
 
 	"github.com/dhconnelly/rtreego"
@@ -61,10 +60,7 @@ func (ds *DriverStorage) RemoveDriversByCompanyName(companyName string) {
 	ds.Lock()
 	drivers := ds.companyDrivers[companyName]
 	for _, driver := range drivers {
-		deleted := ds.geoIndex.Delete(driver)
-		if deleted {
-			fmt.Println("Item deleted")
-		}
+		ds.geoIndex.Delete(driver)
 	}
 	ds.Unlock()
 }
