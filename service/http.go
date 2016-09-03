@@ -1,6 +1,7 @@
 package service
 
 import (
+	"fmt"
 	"net/http"
 	"strconv"
 
@@ -8,6 +9,7 @@ import (
 	"github.com/gen1us2k/log"
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/engine/standard"
+	"github.com/labstack/echo/middleware"
 	"github.com/maddevsio/openfreecab-storage/service/data"
 )
 
@@ -30,6 +32,9 @@ func (h *HTTPService) Init(os *OpenStorage) error {
 	e := echo.New()
 	h.treeService = h.os.RtreeService()
 	h.e = e
+	h.e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
+		AllowOrigins: []string{"*"},
+	}))
 	h.e.GET("/nearest/:lat/:lon", h.nearestNeighbors)
 	h.e.Static("/static", "static")
 	h.e.POST("/add/", h.addData)
@@ -73,7 +78,7 @@ func (h *HTTPService) nearestNeighbors(c echo.Context) error {
 		info := data.Companies[key]
 		companies = append(companies, data.Company{
 			Name:     key,
-			Icon:     info.Icon,
+			Icon:     fmt.Sprintf("%s%s", h.os.Config().BaseURL, info.Icon),
 			Contacts: info.Contacts,
 			Drivers:  value,
 		})

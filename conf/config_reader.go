@@ -11,6 +11,7 @@ import (
 var (
 	Version      string
 	HTTPBindAddr string
+	BaseURL      string
 	LogLevel     string
 	TestMode     bool
 )
@@ -35,6 +36,7 @@ func NewConfigurator() *Configuration {
 func (c *Configuration) fillConfig() *StorageConfig {
 	return &StorageConfig{
 		HTTPBindAddr: HTTPBindAddr,
+		BaseURL:      BaseURL,
 		TestMode:     TestMode,
 	}
 }
@@ -69,6 +71,13 @@ func (c *Configuration) setupFlags() []cli.Flag {
 			Usage:       "Define custom http port to bind to",
 			EnvVar:      "HTTP_BIND_ADDR",
 			Destination: &HTTPBindAddr,
+		},
+		cli.StringFlag{
+			Name:        "base_url",
+			Value:       "http://localhost:8090",
+			Usage:       "Define custom base url for project",
+			EnvVar:      "BASE_URL",
+			Destination: &BaseURL,
 		},
 		cli.StringFlag{
 			Name:        "loglevel",
