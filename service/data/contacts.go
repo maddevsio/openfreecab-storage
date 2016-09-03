@@ -14,7 +14,7 @@ var Companies map[string]CompanyInfo
 func init() {
 	Companies = make(map[string]CompanyInfo)
 	Companies["NambaTaxi"] = CompanyInfo{
-		Icon: "/static/nambataxi.png",
+		Icon: "/static/namba.svg",
 		Contacts: []Contact{
 			Contact{
 				Type:    "sms",

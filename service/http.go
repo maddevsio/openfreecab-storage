@@ -31,6 +31,7 @@ func (h *HTTPService) Init(os *OpenStorage) error {
 	h.treeService = h.os.RtreeService()
 	h.e = e
 	h.e.GET("/nearest/:lat/:lon", h.nearestNeighbors)
+	h.e.Static("/static", "static")
 	h.e.POST("/add/", h.addData)
 	h.e.POST("/clean/:companyName/", h.cleanByCompanyName)
 	return nil
