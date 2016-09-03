@@ -3,9 +3,8 @@ package data
 import "github.com/dhconnelly/rtreego"
 
 type DriverItem struct {
-	Lat  float64 `json:"lat"`
-	Lon  float64 `json:"lon"`
-	Name string  `json:"name"`
+	Lat float64 `json:"lat"`
+	Lon float64 `json:"lon"`
 }
 type NearestResponse struct {
 	Success   bool      `json:"success"`

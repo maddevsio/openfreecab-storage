@@ -48,7 +48,7 @@ func (ds *DriverStorage) Nearest(point rtreego.Point) map[string][]data.DriverIt
 
 		currentDrivers := drivers[driver.CompanyName]
 
-		dr := data.DriverItem{Name: driver.CompanyName}
+		dr := data.DriverItem{}
 		dr.SetCoords(driver.Location)
 		currentDrivers = append(currentDrivers, dr)
 		drivers[driver.CompanyName] = currentDrivers
