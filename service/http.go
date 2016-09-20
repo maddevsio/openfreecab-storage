@@ -3,7 +3,10 @@ package service
 import (
 	"fmt"
 	"net/http"
+	"net/url"
 	"strconv"
+
+	_ "net/http/pprof"
 
 	"github.com/dhconnelly/rtreego"
 	"github.com/gen1us2k/log"
@@ -91,6 +94,11 @@ func (h *HTTPService) nearestNeighbors(c echo.Context) error {
 
 func (h *HTTPService) cleanByCompanyName(c echo.Context) error {
 	companyName := c.Param("companyName")
+	companyName, err := url.QueryUnescape(companyName)
+	if err != nil {
+		h.logger.Errorf("Got error decoding companyName", err)
+	}
+	h.logger.Infof("Cleaning data for %s", companyName)
 	h.treeService.CleanStorageByCompanyName(companyName)
 	return c.JSON(http.StatusOK, &data.DefaultResponse{
 		Success: true,

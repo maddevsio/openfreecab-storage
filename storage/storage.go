@@ -25,9 +25,7 @@ func NewDriverStorage(nearestNeighbors int) *DriverStorage {
 func (ds *DriverStorage) AddDriver(driver *data.Driver) {
 	ds.Lock()
 	ds.geoIndex.Insert(driver)
-	drivers := ds.companyDrivers[driver.CompanyName]
-	drivers = append(drivers, driver)
-	ds.companyDrivers[driver.CompanyName] = drivers
+	ds.companyDrivers[driver.CompanyName] = append(ds.companyDrivers[driver.CompanyName], driver)
 	ds.Unlock()
 }
 
@@ -56,11 +54,14 @@ func (ds *DriverStorage) Nearest(point rtreego.Point) map[string][]data.DriverIt
 	ds.Unlock()
 	return drivers
 }
+
 func (ds *DriverStorage) RemoveDriversByCompanyName(companyName string) {
 	ds.Lock()
+	var nilDrivers []*data.Driver
 	drivers := ds.companyDrivers[companyName]
 	for _, driver := range drivers {
 		ds.geoIndex.Delete(driver)
 	}
+	ds.companyDrivers[companyName] = nilDrivers
 	ds.Unlock()
 }

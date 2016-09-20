@@ -27,6 +27,7 @@ func NewOpenStorage(config *conf.StorageConfig) *OpenStorage {
 	os.services = make(map[string]Service)
 	os.AddService(&RtreeService{})
 	os.AddService(&HTTPService{})
+	os.AddService(&DebugService{})
 	return os
 }
 
