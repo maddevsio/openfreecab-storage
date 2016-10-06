@@ -27,7 +27,7 @@ func init() {
 		},
 	}
 	Companies["SmsTaxi"] = CompanyInfo{
-		Icon: "/static/smstaxi.png",
+		Icon: "/static/logo-sms.png",
 		Contacts: []Contact{
 			Contact{
 				Type:    "sms",
@@ -36,6 +36,32 @@ func init() {
 			Contact{
 				Type:    "phone",
 				Contact: "+996551061236",
+			},
+		},
+	}
+	Companies["Diesel"] = CompanyInfo{
+		Icon: "/static/logo-diesel.png",
+		Contacts: []Contact{
+			Contact{
+				Type:    "sms",
+				Contact: "1450",
+			},
+			Contact{
+				Type:    "phone",
+				Contact: "+996552145000",
+			},
+		},
+	}
+	Companies["Jorgo"] = CompanyInfo{
+		Icon: "/static/logo-jorgo.png",
+		Contacts: []Contact{
+			Contact{
+				Type:    "sms",
+				Contact: "2022",
+			},
+			Contact{
+				Type:    "phone",
+				Contact: "+996550662022",
 			},
 		},
 	}
