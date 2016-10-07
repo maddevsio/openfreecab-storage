@@ -65,4 +65,69 @@ func init() {
 			},
 		},
 	}
+	Companies["Magnat"] = CompanyInfo{
+		Icon: "/static/logo-magnat.png",
+		Contacts: []Contact{
+			Contact{
+				Type:    "sms",
+				Contact: "5577",
+			},
+			Contact{
+				Type:    "phone",
+				Contact: "+996553895577",
+			},
+		},
+	}
+	Companies["Pegas"] = CompanyInfo{
+		Icon: "/static/logo-pegas.png",
+		Contacts: []Contact{
+			Contact{
+				Type:    "sms",
+				Contact: "1828",
+			},
+			Contact{
+				Type:    "phone",
+				Contact: "+996700941828",
+			},
+		},
+	}
+	Companies["Pelican"] = CompanyInfo{
+		Icon: "/static/logo-pelecan.png",
+		Contacts: []Contact{
+			Contact{
+				Type:    "sms",
+				Contact: "+996558474747",
+			},
+			Contact{
+				Type:    "phone",
+				Contact: "+996312474747",
+			},
+		},
+	}
+	Companies["Super"] = CompanyInfo{
+		Icon: "/static/logo-jorgo.png",
+		Contacts: []Contact{
+			Contact{
+				Type:    "sms",
+				Contact: "xz",
+			},
+			Contact{
+				Type:    "phone",
+				Contact: "152",
+			},
+		},
+	}
+	Companies["Wifi"] = CompanyInfo{
+		Icon: "/static/logo-wifi.png",
+		Contacts: []Contact{
+			Contact{
+				Type:    "sms",
+				Contact: "1422",
+			},
+			Contact{
+				Type:    "phone",
+				Contact: "+996552142200",
+			},
+		},
+	}
 }
