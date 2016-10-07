@@ -91,7 +91,7 @@ func init() {
 			},
 		},
 	}
-	Companies["Pelican"] = CompanyInfo{
+	Companies["Pelikan"] = CompanyInfo{
 		Icon: "/static/logo-pelecan.png",
 		Contacts: []Contact{
 			Contact{
