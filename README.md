@@ -1,6 +1,6 @@
 # Openfreecabs.org storage
 
-A thread-safe Geo storage for https://openfreecabs.org project based on R-tree index. With simple http api
+A thread-safe in-memory Geo storage for https://openfreecabs.org project based on R-tree index. With simple http api
 
 ## Prerequisites
 
