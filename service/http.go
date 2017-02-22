@@ -11,7 +11,6 @@ import (
 	"github.com/dhconnelly/rtreego"
 	"github.com/gen1us2k/log"
 	"github.com/labstack/echo"
-	"github.com/labstack/echo/engine/standard"
 	"github.com/labstack/echo/middleware"
 	"github.com/maddevsio/openfreecab-storage/service/data"
 )
@@ -46,7 +45,7 @@ func (h *HTTPService) Init(os *OpenStorage) error {
 }
 
 func (h *HTTPService) Run() error {
-	h.e.Run(standard.New(h.os.Config().HTTPBindAddr))
+	h.e.Start(h.os.Config().HTTPBindAddr)
 	return nil
 }
 
